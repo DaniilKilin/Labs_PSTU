@@ -8,7 +8,7 @@ using namespace System;
 
 string& Convector_String_to_string(String^ s, std::string& os);
 
-// Перевод из типа "String" в "string"
+// РџРµСЂРµРІРѕРґ РёР· С‚РёРїР° "String" РІ "string"
 std::string& Convector_String_to_string(String^ s, std::string& os)
 {
 	using namespace Runtime::InteropServices;
@@ -21,20 +21,20 @@ std::string& Convector_String_to_string(String^ s, std::string& os)
 
 class Converters {
 private:
-	//Вектор содержит исходное число
+	//Р’РµРєС‚РѕСЂ СЃРѕРґРµСЂР¶РёС‚ РёСЃС…РѕРґРЅРѕРµ С‡РёСЃР»Рѕ
 	vector<int> a;
-	//Исходная система счисления
+	//РСЃС…РѕРґРЅР°СЏ СЃРёСЃС‚РµРјР° СЃС‡РёСЃР»РµРЅРёСЏ
 	int iriginal;
 public:
-	//Конструктор, содержит 2 параметра: строка исходного числа, исходная система счисления
+	//РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ, СЃРѕРґРµСЂР¶РёС‚ 2 РїР°СЂР°РјРµС‚СЂР°: СЃС‚СЂРѕРєР° РёСЃС…РѕРґРЅРѕРіРѕ С‡РёСЃР»Р°, РёСЃС…РѕРґРЅР°СЏ СЃРёСЃС‚РµРјР° СЃС‡РёСЃР»РµРЅРёСЏ
 	Converters(string str, int original) {
 		this->iriginal = original;
-		//Заносит числа исходного числа в вектор
+		//Р—Р°РЅРѕСЃРёС‚ С‡РёСЃР»Р° РёСЃС…РѕРґРЅРѕРіРѕ С‡РёСЃР»Р° РІ РІРµРєС‚РѕСЂ
 		for (int i = 0; i < str.length(); i++) {
 			this->a.push_back(charToInt(str[i]));
 		}
 	}
-	//Переводит символ в число, вместо некорректных символов возвращает -1
+	//РџРµСЂРµРІРѕРґРёС‚ СЃРёРјРІРѕР» РІ С‡РёСЃР»Рѕ, РІРјРµСЃС‚Рѕ РЅРµРєРѕСЂСЂРµРєС‚РЅС‹С… СЃРёРјРІРѕР»РѕРІ РІРѕР·РІСЂР°С‰Р°РµС‚ -1
 	int charToInt(char c) {
 		if (c >= '0' && c <= '9' && (c - '0') < this->iriginal) {
 			return c - '0';
@@ -48,7 +48,7 @@ public:
 			}
 		}
 	}
-	//Переводит число в символ
+	//РџРµСЂРµРІРѕРґРёС‚ С‡РёСЃР»Рѕ РІ СЃРёРјРІРѕР»
 	char intToChar(int c) {
 		if (c >= 0 && c <= 9) {
 			return c + '0';
@@ -57,7 +57,7 @@ public:
 			return c + 'A' - 10;
 		}
 	}
-	//Получает следующую цифру числа в новой системе счисления
+	//РџРѕР»СѓС‡Р°РµС‚ СЃР»РµРґСѓСЋС‰СѓСЋ С†РёС„СЂСѓ С‡РёСЃР»Р° РІ РЅРѕРІРѕР№ СЃРёСЃС‚РµРјРµ СЃС‡РёСЃР»РµРЅРёСЏ
 	int nextNumber(int final) {
 		int temp = 0;
 		for (int i = 0; i < this->a.size(); i++) {
@@ -67,7 +67,7 @@ public:
 		}
 		return temp;
 	}
-	//Возвращает true - если массив состоит из одних нулей и false в противном случае
+	//Р’РѕР·РІСЂР°С‰Р°РµС‚ true - РµСЃР»Рё РјР°СЃСЃРёРІ СЃРѕСЃС‚РѕРёС‚ РёР· РѕРґРЅРёС… РЅСѓР»РµР№ Рё false РІ РїСЂРѕС‚РёРІРЅРѕРј СЃР»СѓС‡Р°Рµ
 	bool zero() {
 		for (int i = 0; i < this->a.size(); i++) {
 			if (a[i] != 0) {
@@ -76,7 +76,7 @@ public:
 		}
 		return true;
 	}
-	//Конвертирует исходное число в заданную систему счисления
+	//РљРѕРЅРІРµСЂС‚РёСЂСѓРµС‚ РёСЃС…РѕРґРЅРѕРµ С‡РёСЃР»Рѕ РІ Р·Р°РґР°РЅРЅСѓСЋ СЃРёСЃС‚РµРјСѓ СЃС‡РёСЃР»РµРЅРёСЏ
 	string convertTo(int final) {
 		vector<int> b;
 		int size = 0;
@@ -92,10 +92,10 @@ public:
 		return sTemp;
 	}
 };
-// Функция которая переводит дробную часть из 10 СС в любую другую.
+// Р¤СѓРЅРєС†РёСЏ РєРѕС‚РѕСЂР°СЏ РїРµСЂРµРІРѕРґРёС‚ РґСЂРѕР±РЅСѓСЋ С‡Р°СЃС‚СЊ РёР· 10 РЎРЎ РІ Р»СЋР±СѓСЋ РґСЂСѓРіСѓСЋ.
 string double_to_another_sys(double number, int sys, int iterationCount = 9)
 {
-	// iterationCount - точность расчёта
+	// iterationCount - С‚РѕС‡РЅРѕСЃС‚СЊ СЂР°СЃС‡С‘С‚Р°
 	double integer;
 	string result = "";
 	for (int i = 0; i < iterationCount; i++)
@@ -115,7 +115,7 @@ string double_to_another_sys(double number, int sys, int iterationCount = 9)
 	return result;
 }
 
-// Функция для перевода дробной части из любой СС в десятичную
+// Р¤СѓРЅРєС†РёСЏ РґР»СЏ РїРµСЂРµРІРѕРґР° РґСЂРѕР±РЅРѕР№ С‡Р°СЃС‚Рё РёР· Р»СЋР±РѕР№ РЎРЎ РІ РґРµСЃСЏС‚РёС‡РЅСѓСЋ
 double to_some_system(string number, int sys)
 {
 	double result = 0;
@@ -124,7 +124,7 @@ double to_some_system(string number, int sys)
 
 	for (int i = 0; i < len; i++)
 	{
-		int num = number[i] - 0x30; // 0x30 - Шестнадцатеричный код для " 0 ".
+		int num = number[i] - 0x30; // 0x30 - РЁРµСЃС‚РЅР°РґС†Р°С‚РµСЂРёС‡РЅС‹Р№ РєРѕРґ РґР»СЏ " 0 ".
 		result += num * pow(sys, i * -1);
 	}
 	return result;
