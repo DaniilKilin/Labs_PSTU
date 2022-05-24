@@ -10,10 +10,10 @@
 #include <queue>
 using namespace std;
 
-const int maximumVerts = 10;//максимальное число вершин
-extern int WinW;//ширина и высота окна
+const int maximumVerts = 10;//РјР°РєСЃРёРјР°Р»СЊРЅРѕРµ С‡РёСЃР»Рѕ РІРµСЂС€РёРЅ
+extern int WinW;//С€РёСЂРёРЅР° Рё РІС‹СЃРѕС‚Р° РѕРєРЅР°
 extern int WinH;
-struct vertCoord //структура координат вершин
+struct vertCoord //СЃС‚СЂСѓРєС‚СѓСЂР° РєРѕРѕСЂРґРёРЅР°С‚ РІРµСЂС€РёРЅ
 {
 	int x, y;
 };
@@ -27,36 +27,36 @@ public:
 	Graph();
 	~Graph();
 
-	bool IsEmpty(); // Проверка на пустоту
-	bool IsFull(); // Проверка на заполненность 
+	bool IsEmpty(); // РџСЂРѕРІРµСЂРєР° РЅР° РїСѓСЃС‚РѕС‚Сѓ
+	bool IsFull(); // РџСЂРѕРІРµСЂРєР° РЅР° Р·Р°РїРѕР»РЅРµРЅРЅРѕСЃС‚СЊ 
 	int GetVertexElement(int i) { return vertList[i]; }
 	vector<int> GetVertList() { return  vertList; }
 	int GetAdjMatrixElement(int i, int j) { return adjMatrix[i][j]; }
-	int GetAmountEdges(); // Количество рёбр 
-	int GetAmountVerts() { return vertList.size(); } // Количество вершин
+	int GetAmountEdges(); // РљРѕР»РёС‡РµСЃС‚РІРѕ СЂС‘Р±СЂ 
+	int GetAmountVerts() { return vertList.size(); } // РљРѕР»РёС‡РµСЃС‚РІРѕ РІРµСЂС€РёРЅ
 	int GetVertPos(const int& v);
-	void InsertVertex(const int& v); // Добавление вершины
-	void InsertEdge(const int& v, const int& v2, int w); // Добавление ребра
-	void PrintGraph(); // Вывод матрицы смежности
-	void DeleteVertex(); // Удаление вершины
-	void DeleteEdge(const int& v1, const int& v2); // Удаление ребра
-	void drawGraph(); // Вывод графа
+	void InsertVertex(const int& v); // Р”РѕР±Р°РІР»РµРЅРёРµ РІРµСЂС€РёРЅС‹
+	void InsertEdge(const int& v, const int& v2, int w); // Р”РѕР±Р°РІР»РµРЅРёРµ СЂРµР±СЂР°
+	void PrintGraph(); // Р’С‹РІРѕРґ РјР°С‚СЂРёС†С‹ СЃРјРµР¶РЅРѕСЃС‚Рё
+	void DeleteVertex(); // РЈРґР°Р»РµРЅРёРµ РІРµСЂС€РёРЅС‹
+	void DeleteEdge(const int& v1, const int& v2); // РЈРґР°Р»РµРЅРёРµ СЂРµР±СЂР°
+	void drawGraph(); // Р’С‹РІРѕРґ РіСЂР°С„Р°
 };
 
 extern Graph graph;
-int** TransMatrix(); //создается матрица, заменяя 0 на -1
-int* Find_Min(int* l, int n);//поиск минимального элемента в строке матрицы
-void Print(int** m);//вывод текущей матрицы
-int** Reduct_Matrix(int** m); //редукция матрицы
-int** b_and_b(int** m); // Метод ветвей и границ
-void comy();//вывод результата решения задачи Коммивояжера
-bool Cheking(int** matrix); // Проверка на возможность решения задачи
+int** TransMatrix(); //СЃРѕР·РґР°РµС‚СЃСЏ РјР°С‚СЂРёС†Р°, Р·Р°РјРµРЅСЏСЏ 0 РЅР° -1
+int* Find_Min(int* l, int n);//РїРѕРёСЃРє РјРёРЅРёРјР°Р»СЊРЅРѕРіРѕ СЌР»РµРјРµРЅС‚Р° РІ СЃС‚СЂРѕРєРµ РјР°С‚СЂРёС†С‹
+void Print(int** m);//РІС‹РІРѕРґ С‚РµРєСѓС‰РµР№ РјР°С‚СЂРёС†С‹
+int** Reduct_Matrix(int** m); //СЂРµРґСѓРєС†РёСЏ РјР°С‚СЂРёС†С‹
+int** b_and_b(int** m); // РњРµС‚РѕРґ РІРµС‚РІРµР№ Рё РіСЂР°РЅРёС†
+void comy();//РІС‹РІРѕРґ СЂРµР·СѓР»СЊС‚Р°С‚Р° СЂРµС€РµРЅРёСЏ Р·Р°РґР°С‡Рё РљРѕРјРјРёРІРѕСЏР¶РµСЂР°
+bool Cheking(int** matrix); // РџСЂРѕРІРµСЂРєР° РЅР° РІРѕР·РјРѕР¶РЅРѕСЃС‚СЊ СЂРµС€РµРЅРёСЏ Р·Р°РґР°С‡Рё
 int Circle_Check(int x, int y);
 void drawCircle(int x, int y, int R); 
 void drawThisCircle(int x, int y, int R);
-void drawText(int nom, int x1, int y1); // Отрисовка текста
-void drawLine(int text, int x0, int y0, int x1, int y1); // Отрисовка линий между вершинами
-void drawVertex(int n); // Отрисовка вершины
+void drawText(int nom, int x1, int y1); // РћС‚СЂРёСЃРѕРІРєР° С‚РµРєСЃС‚Р°
+void drawLine(int text, int x0, int y0, int x1, int y1); // РћС‚СЂРёСЃРѕРІРєР° Р»РёРЅРёР№ РјРµР¶РґСѓ РІРµСЂС€РёРЅР°РјРё
+void drawVertex(int n); // РћС‚СЂРёСЃРѕРІРєР° РІРµСЂС€РёРЅС‹
 void button_1();
 void button_2();
 void button_3();
@@ -65,9 +65,9 @@ void button_5();
 void button_6();
 void makeGraph();
 void setCoords(int i, int n); 
-void Move(int x, int y); // Передвижение вершин
+void Move(int x, int y); // РџРµСЂРµРґРІРёР¶РµРЅРёРµ РІРµСЂС€РёРЅ
 void Click(int button, int state, int x, int y);
-void reshape(int w, int h); // Изменение размеров окна
-void display(); // Вывод на экран
+void reshape(int w, int h); // РР·РјРµРЅРµРЅРёРµ СЂР°Р·РјРµСЂРѕРІ РѕРєРЅР°
+void display(); // Р’С‹РІРѕРґ РЅР° СЌРєСЂР°РЅ
 
 
